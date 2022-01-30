@@ -56,7 +56,7 @@
 				  if( isset($_POST['login']) ){
 					  include"koneksi.php";
 					  $username  = $_POST['username'];
-					  $pass 	 = $_POST['pass'];
+					  $pass      = $_POST['pass'];
 
 					  $cek_user	 = mysqli_query( $conn,"SELECT * FROM adminberita WHERE username='$username'");
 					  $row       = mysqli_num_rows($cek_user);
@@ -67,7 +67,7 @@
 						if( $cek_pass <> $pass ){
 							echo"<script>alert('password salah');</script>";
 						}else{
-							echo"<script>alert('Login berhasil');document.location.href='menuadmin.php'</script>";
+							echo"<script>alert('Login berhasil');document.location.href='konfigurasi.php'</script>";
 						}
 					  }else{
 						  echo"<script>alert('Username salah atau belum terdaftar');</script>";
