@@ -6,7 +6,6 @@ $judul    = "";
 $isi      = "";
 $file     = "";
 
-$kategori = mysqli_query($conn, "SELECT * FROM kategori_artikel");
 $id = isset($_GET['id']) ? $_GET['id'] : '';
 
 if (isset($_GET['op'])) {
@@ -59,7 +58,7 @@ if (isset($_POST["simpanEdit"])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tambah Berita</title>
+    <title>Edit Berita</title>
     <link rel="stylesheet" type="text/css" href="../vendor/bootstrap/css/bootstrap.min.css">
     <link href="../css/styles.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
@@ -183,11 +182,17 @@ if (isset($_POST["simpanEdit"])) {
                                 <div class="mb-3">
                                     <label for="DataList" class="form-label">Kategori</label>
                                     <select class="form-select" id="kategori" name="kategori" aria-label="Default select example">
-                                        <option selected>-- pilih kategori --</option>
+                                        <option>-- pilih kategori --</option>
                                         <?php 
-                                        while($row = mysqli_fetch_array($kategori)) {?>
-                                        <option value="<?=$row['nama_kategori']?>"><?=$row['nama_kategori']?></option>
-                                        <?php }?>
+                                        $kategori = mysqli_query($conn, "SELECT * FROM kategori_artikel");
+                                        while($row = mysqli_fetch_array($kategori)) {
+                                            if($row['id'] == $kategori){?>
+                                                <option value="<?=$row['id']?>" selected="selected"><?=$row['nama_kategori']?></option>
+                                        <?php } else{?>
+                                            <option value="<?=$row['id']?>"><?=$row['nama_kategori']?></option>
+                                        <?php }
+                                        }
+                                        ?> 
                                     </select>
                                 </div>
                                 <div class="mb-3">
