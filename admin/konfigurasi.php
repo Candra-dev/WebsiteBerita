@@ -78,7 +78,7 @@
                             </nav>
                         </div>
                         <div class="sb-sidenav-menu-heading">Web</div>
-                        <a class="nav-link" href="charts.html">
+                        <a class="nav-link" href="../index.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                             Website
                         </a>

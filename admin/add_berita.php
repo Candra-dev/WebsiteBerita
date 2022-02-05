@@ -18,7 +18,7 @@ if (isset($_GET['op'])) {
 if (isset($_POST["tambah"])) {
     $judul        = $_POST['judul'];
     $isi          = $_POST['isi'];
-    $kategori     = $_POST['nama_kategori'];
+    $kategori     = $_POST['kategori'];
     $file         = $_FILES['gambar']['name'];
     $source       = $_FILES['gambar']['tmp_name'];
     $folder       = './gambar/';
@@ -26,7 +26,7 @@ if (isset($_POST["tambah"])) {
     if ($judul && $isi && $kategori && $file) {
         // Tambah data
         move_uploaded_file($source, $folder . $file);
-        $sql = "insert into artikel_berita (judul_artikel, isi_artikel, kategori, gambar_artikel) value ('$judul','$isi','$kategori', '$file');";
+        $sql = "insert into artikel_berita (judul_artikel, isi_artikel, kategori, gambar_artikel) value ('$judul','$isi','$kategori','$file');";
         $qinsert = mysqli_query($conn, $sql);
         if ($qinsert) {
             $sukses  = "Berhasil menambahkan artikel";
@@ -171,10 +171,10 @@ if (isset($_POST["tambah"])) {
                                     <label for="DataList" class="form-label">Kategori</label>
                                     <select class="form-select" id="kategori" name="kategori" aria-label="Default select example">
                                         <option selected>-- pilih kategori --</option>
-                                        <?php 
+                                        <?php
                                         while($row = mysqli_fetch_array($kategori)) {?>
                                         <option value="<?=$row['nama_kategori']?>"><?=$row['nama_kategori']?></option>
-                                        <?php }?>
+                                        <?php }?> 
                                     </select>
                                 </div>
                                 <div class="mb-3">
