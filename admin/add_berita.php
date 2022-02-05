@@ -18,7 +18,7 @@ if (isset($_GET['op'])) {
 if (isset($_POST["tambah"])) {
     $judul        = $_POST['judul'];
     $isi          = $_POST['isi'];
-    $kategori     = $_POST['nama_kategori'];
+    $kategori     = $_POST['kategori'];
     $file         = $_FILES['gambar']['name'];
     $source       = $_FILES['gambar']['tmp_name'];
     $folder       = './gambar/';
