@@ -58,12 +58,14 @@
 					  $username  = $_POST['username'];
 					  $pass      = $_POST['pass'];
 
-					  $cek_user	 = mysqli_query( $conn,"SELECT * FROM adminberita WHERE username='$username'");
-					  $row       = mysqli_num_rows($cek_user);
+					  $user	 = mysqli_query( $conn,"SELECT * FROM adminberita WHERE username='$username'");
+					  $row   = mysqli_num_rows($user);
 
-					  if( $row === 1){
-						$fetc_pass = mysqli_fetch_assoc($cek_user);
-						$cek_pass  = $fetc_pass['password'];
+					  if( $row > 0){
+						session_start();
+						$row = mysqli_fetch_array($user);
+						$_SESSION['username'] = $row['username'];
+						$cek_pass  = $row['password'];
 						if( $cek_pass <> $pass ){
 							echo"<script>alert('password salah');</script>";
 						}else{
