@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "koneksi.php";
 $sukses   = "";
 $error    = "";
@@ -125,7 +126,7 @@ if (isset($_POST["tambah"])) {
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                    Admin Website
+                    <?php echo $_SESSION['username']?>
                 </div>
             </nav>
         </div>

@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "koneksi.php";
 $sukses   = "";
 $error    = "";
@@ -188,9 +189,9 @@ if (isset($_POST["simpanEdit"])) {
                                         $kategori = mysqli_query($conn, "SELECT * FROM kategori_artikel");
                                         while($row = mysqli_fetch_array($kategori)) {
                                             if($row['id'] == $kategori){?>
-                                                <option value="<?=$row['id']?>" selected="selected"><?=$row['nama_kategori']?></option>
+                                                <option value="<?=$row['nama_kategori']?>" selected="selected"><?=$row['nama_kategori']?></option>
                                         <?php } else{?>
-                                            <option value="<?=$row['id']?>"><?=$row['nama_kategori']?></option>
+                                            <option value="<?=$row['nama_kategori']?>"><?=$row['nama_kategori']?></option>
                                         <?php }
                                         }
                                         ?> 
